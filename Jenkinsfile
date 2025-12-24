@@ -10,7 +10,9 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t puneetdhankad/myapp:v1 .'
+                    sh 'docker buildx create --use || true'
+                    sh 'docker buildx build --platform linux/amd64 -t puneetdhankad/myapp:v1 .'
+                    //sh 'docker build -t puneetdhankad/myapp:v1 .'
                     sh 'docker images'
                 }
             }
