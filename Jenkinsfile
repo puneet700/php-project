@@ -11,7 +11,7 @@ pipeline {
             steps{
                 script{
                     sh 'docker buildx create --use || true'
-                    sh 'docker buildx build --platform linux/amd64 -t puneetdhankad/myapp:v1 .'
+                    sh 'docker buildx build --platform linux/amd64 -t puneetdhankad/myapp:v1 --push .'
                     //sh 'docker build -t puneetdhankad/myapp:v1 .'
                     sh 'docker images'
                 }
